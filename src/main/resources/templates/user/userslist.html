@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<h1>User List</h1>
+<form action="/user/users" method="post" >
+  <table border="1">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Qualification</th>
+      <th>Role</th>
+      <!-- Добавьте другие заголовки для дополнительных полей товара -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.fullName}"></td>
+      <td th:text="${user.address}"></td>
+      <td th:text="${user.email}"></td>
+      <td th:text="${user.qualification}"></td>
+      <td th:text="${user.role}"></td>
+      <td>
+        <form action="/seller/users/delete/{productId}" method="post">
+          <input type="hidden" th:value="${product.id}" name="id">
+          <input type="submit" value="Delete">
+        </form>
+      </td>
+      <!-- Добавьте другие ячейки для дополнительных полей товара -->
+    </tr>
+    </tbody>
+  </table>
+
+</form>
+</html>
+
